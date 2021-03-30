@@ -84,6 +84,7 @@
         } else {
             entreeMenu();
         }
+        alert(`Oh, ${randomComment}! Your total so far is ${userTotal}.`)
     }
 
     function sidesMenu() {
@@ -117,9 +118,9 @@
 
 
     function closingTab() {
-        alert (`${randomComment}!`)
+        //alert (`${randomComment}!`)
 
-        let finalTotal = `Your final total for the ${userMenuChoices.join(' ,')} is
+        let finalTotal = `Your final total for the ${userMenuChoices.join(', ')} is
         ${userTotal.toFixed(2)}`
 
         alert(finalTotal)
