@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js Menu</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+</head>
+<body>
+    Welcome!
+
+</body>
+<script>
+    const menues = ['Entrees', 'Sides'];
+
+    const entreeItems = {
+        'Burger': 8.00,
+        'Chicken': 10.00,
+        'Steak': 15.00,
+        'Lasagna': 10.00
+    };
+
+    const sides = {
+        'Fries': 2.00,
+        'Sweet Potatoes': 3.00,
+        'Salad': 3.00,
+        'Broccoli': 2.00
+    };
+
+    const comment = [
+    "That's on of my favorites",
+    "Very good choice",
+    "You will love it",
+    "That been very popular today"
+    ]
+    //const capitalizeFirstLetter = (string) => {
+      //  return string.charAt(0).toUpperCase() + string.slice(1);
+    //}
+    let userMenuChoices = [];
+    let userTotal = 0;
+
+    const randomComment = comment[Math.floor(Math.random()*comment.length)];
+    //const randomFood = userMenuChoices[Math.floor(Math.random()*userMenuChoices.length)];
+
+    function welcome() {
+        let userChoice = prompt(`Hello! What menu would you like to see?\n\n ${menues}`)
+
+        if (userChoice.toLowerCase() === 'entrees') {
+            //for (var key in entreeItems) {
+              //  alert(key + ' : ' + entreeItems[key].toFixed(2))
+            
+            entreeMenu();
+        } else if (userChoice.toLowerCase() === 'sides') {
+            sidesMenu();
+        } else {
+            welcome();
+        }
+    };
+
+    function entreeMenu() {
+        let foodArray = Object.keys(entreeItems);
+        let entreeChoice = prompt(`Which entree item would you like:\n\n ${foodArray}`)
+
+        if (entreeChoice.toLowerCase() === 'burger') {
+            let userChoice = Object.keys(entreeItems)[0]
+            userMenuChoices.push(userChoice)
+            userTotal += entreeItems.Burger
+
+        } else if (entreeChoice.toLowerCase() === 'chicken') {
+            let userChoice = Object.keys(entreeItems)[1]
+            userMenuChoices.push(userChoice)
+            userTotal += entreeItems.Chicken
+        
+        } else if (entreeChoice.toLowerCase() === 'steak') {
+            let userChoice = Object.keys(entreeItems)[2]
+            userMenuChoices.push(userChoice)
+            userTotal += entreeItems.Steak
+        
+        } else if (entreeChoice.toLowerCase() === 'lasagna') {
+            let userChoice = Object.keys(entreeItems)[3]
+            userMenuChoices.push(userChoice)
+            userTotal += entreeItems.Lasagna
+        
+        } else {
+            entreeMenu();
+        }
+    }
+
+    function sidesMenu() {
+        let sidesArray = Object.keys(sides);
+        let sidesChoiceOne = prompt(`What side would you like?\n\n ${sidesArray}`)
+
+        if (sidesChoiceOne.toLowerCase() === 'fries') {
+            let userChoice = Object.keys(sides)[0]
+            userMenuChoices.push(userChoice)
+            userTotal += sides.Fries
+    
+        } else if (sidesChoiceOne.toLowerCase() === 'sweet potatoes') {
+            let userChoice = Object.keys(sides)[1]
+            userMenuChoices.push(userChoice)
+            userTotal += sides['Sweet Potatoes']
+    
+        } else if (sidesChoiceOne.toLowerCase() === 'salad') {
+            let userChoice = Object.keys(sides)[2]
+            userMenuChoices.push(userChoice)
+            userTotal += sides.Salad
+    
+        } else if (sidesChoiceOne.toLowerCase() === 'broccoli') {
+            let userChoice = Object.keys(sides)[3]
+            userMenuChoices.push(userChoice)
+            userTotal += sides.Broccoli
+    
+        } else {
+            sidesMenu();
+        }
+    }
+
+
+    function closingTab() {
+        alert (`${randomComment}!`)
+
+        let finalTotal = `Your final total for the ${userMenuChoices.join(' ,')} is
+        ${userTotal.toFixed(2)}`
+
+        alert(finalTotal)
+    }
+
+    function menuStart() {
+        alert('Welcome to the Diner!')
+        welcome();
+        alert('You get two sides with your entree')
+        sidesMenu();
+        sidesMenu();
+        closingTab();
+    }
+
+   menuStart(); 
+</script>
+</html>

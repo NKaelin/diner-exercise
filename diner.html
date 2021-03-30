@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js Menu</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+</head>
+<body>
+    Welcome!
+
+</body>
+<script>
+
+    const menuItems = {
+        'Hamburger': 8.00,
+        'Roasted Chicken': 10.00,
+        'Steak': 15.00,
+        'Lasagna': 10.00
+    };
+
+    const sides = {
+        'Fries': 0.00,
+        'Sweet Potatos': 0.00,
+        'Salad': 0.00,
+        'Broccoli': 0.00
+    };
+
+    const comment = [
+    "That's on of my favorites",
+    "Very good choice",
+    "You will love it",
+    "That been very popular today"
+]
+    const randomComment = comment[Math.floor(Math.random()*comment.length)];
+
+    const capitalizeFirstLetter = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    alert("Welcome to the diner!")
+
+    const diner = () => {
+        let foodArray = Object.keys(menuItems) + Object.values(menuItems);
+        let sidesArray = Object.keys(sides)
+
+        let chosenEntree = prompt(`What would you like to eat?\n\n${foodArray}`);
+        let entree = capitalizeFirstLetter(chosenEntree);
+        
+        if (!(entree instanceof menuItems)) {
+            let chosenSideOne = prompt(` Oh ${entree}, ${randomComment}. That comes with two
+            sides, what would you like for your first choice?\n\n${sidesArray}`);
+            let sideOne = capitalizeFirstLetter(chosenSideOne);
+        } else {
+            alert(`I don't think that's spelled correctly, try again?`)
+        }
+        let chosenSideTwo = prompt(`And for your second choice? \n\n${sidesArray}`);
+        let sideTwo = capitalizeFirstLetter(chosenSideTwo);
+
+       
+
+         alert(`The ${entree} with ${sideOne} and ${sideTwo} is 
+         $${menuItems[entree]}. Thanks for stopping in!`)
+    }
+
+    diner()
+
+    
+</script>
+</html>
